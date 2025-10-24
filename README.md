@@ -3,6 +3,9 @@
 
 ## Support the Project 🙌
 
+### 🤝 **Open to Collaboration**
+- [Twitter](https://twitter.com/david_patrick01)  - [Gmail](davidchuksdev@gmail.com)
+
 If you'd like to support the development of Instagram-AI-Agent, please consider contributing to the following wallet addresses:
 
 - **Bitcoin (BTC)**: 1GkWY6pjn7KoAkCnUab2MxnxeEQihknfUi
