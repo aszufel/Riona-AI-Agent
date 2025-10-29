@@ -90,14 +90,17 @@ export async function runAgent(
 export function chooseCharacter(): any {
   // Try to load Adrian's custom style first
   try {
-    const adrianStylePath = path.join(process.cwd(), "src", "config", "adrian-style");
-    logger.info(`Loading Adrian's custom style configuration...`);
+    // Use __dirname to get relative path that works in both src and build
+    // __dirname will be src/Agent or build/Agent, so go up one level to reach config
+    const adrianStylePath = path.join(__dirname, "..", "config", "adrian-style");
+    logger.info(`Loading Adrian's custom style configuration from: ${adrianStylePath}`);
     const adrianStyle = require(adrianStylePath).default || require(adrianStylePath).adrianStyleConfig;
     logger.info(`✅ Adrian's style loaded successfully!`);
     return adrianStyle;
   } catch (adrianError) {
-    logger.warn(`Could not load adrian-style.ts, falling back to JSON characters`);
-    
+    logger.warn(`Could not load adrian-style: ${adrianError instanceof Error ? adrianError.message : String(adrianError)}`);
+    logger.warn(`Falling back to JSON characters`);
+
     // Fallback to JSON characters
     const charactersDir = (() => {
       const buildPath = path.join(__dirname, "characters");
